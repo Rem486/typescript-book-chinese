@@ -15,7 +15,7 @@
 class Queue {
   private data = [];
   push = item => this.data.push(item);
-  pop = () => this.data.shift;
+  pop = () => this.data.shift();
 }
 ```
 
@@ -25,7 +25,7 @@ class Queue {
 class Queue {
   private data = [];
   push = item => this.data.push(item);
-  pop = () => this.data.shift;
+  pop = () => this.data.shift();
 }
 
 const queue = new Queue();
@@ -44,7 +44,7 @@ console.log(queue.pop().toPrecision(1)); // RUNTIME ERROR
 class QueueNumber {
   private data = [];
   push = (item: number) => this.data.push(item);
-  pop = (): number => this.data.shift;
+  pop = (): number => this.data.shift();
 }
 
 const queue = new QueueNumber();
@@ -55,14 +55,14 @@ queue.push('1'); // Error: 不能推入一个 `string` 类型，只能是 `numbe
 // 如果该错误得到修复，其他将不会出现问题
 ```
 
-当然，快速意为着痛苦的。例如但你想创建一个字符串的队列时，你将不得不再次修改相当大的代码。我们真正想要的一种方式是无论什么类型被推入队列，被推出的类型都与推入类型一样。当你使用泛型时，这会很容易：
+当然，快速意为着痛苦的。例如当你想创建一个字符串的队列时，你将不得不再次修改相当大的代码。我们真正想要的一种方式是无论什么类型被推入队列，被推出的类型都与推入类型一样。当你使用泛型时，这会很容易：
 
 ```ts
 // 创建一个泛型类
 class Queue<T> {
-  private data = [];
+  private data :T[] = [];
   push = (item: T) => this.data.push(item);
-  pop = (): T => this.data.shift();
+  pop = (): T | undefined => this.data.shift();
 }
 
 // 简单的使用
@@ -83,7 +83,7 @@ function reverse<T>(items: T[]): T[] {
 }
 
 const sample = [1, 2, 3];
-const reversed = reverse(sample);
+let reversed = reverse(sample);
 
 reversed[0] = '1'; // Error
 reversed = ['1', '2']; // Error
@@ -209,7 +209,7 @@ import Ax from './axios';
 import { ResponseData } from './interface.ts';
 
 export function getUser<T>() {
-  return Ax.get<ResponseData<T>>('/somepath')
+  return Ax.get<ResponseData<T>('/somepath')
     .then(res => res.data)
     .catch(err => console.error(err));
 }
@@ -228,7 +228,7 @@ async function test() {
   // {
   //  code: number,
   //  result: { name: string, age: number },
-  //  message: number
+  //  message: string
   // }
   const user = await getUser<User>();
 }

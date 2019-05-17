@@ -4,7 +4,7 @@
 
 ## Why
 
-![downloads](http://ovshyp9zv.bkt.clouddn.com/typescript-downloads.jpeg)
+<img :src="$withBase('/typescript-downloads.jpg')" alt="ide"/>
 
 > 数据来源：[npm 包下载量](https://npm-stat.com/charts.html?package=typescript&from=2016-01-01&to=2018-07-31)
 
@@ -41,3 +41,40 @@
 如果你对文章有任何疑问，欢迎提交 [issues](https://github.com/jkchao/typescript-book-chinese/issues) 和我交流。
 
 如果你认为有些地方翻译不够准确，或者你想补充一些文中没提到但是非常有意思的知识点，欢迎 [PR](https://github.com/jkchao/typescript-book-chinese/pulls)。
+
+赞赏支持：
+
+<style>
+.appreciate {
+  display: flex;
+  justify-content: space-around;
+}
+
+.appreciate-item {
+  text-align: center;
+}
+
+@media (max-width: 719px) {
+  .appreciate {
+    flex-wrap: wrap;
+  }
+
+  .appreciate-item {
+    width: 100%;
+  }
+}
+
+
+</style>
+
+<div class="appreciate">
+  <div class="appreciate-item">
+    <img :src="$withBase('/wechat.jpg')" width="200" alt="微信">
+    <p>微信</p>
+  </div>
+
+  <div class="appreciate-item">
+    <img :src="$withBase('/zhifubao.jpg')" width="200" alt="支付宝">
+    <p>支付宝</p>
+  </div>
+</div>

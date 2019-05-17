@@ -24,7 +24,7 @@ function identity(num: number): number {
 
 ## 原始类型
 
-JavaScript 原始类型也同样适应于 TypeScript 的类型系统，因此 `string`、`number`、`boolean` 也可以被用作类型注解：
+JavaScript 原始类型也同样适应于 TypeScript 的类型系统，因此 `string`、`number`、`boolean` 也可以被用作类型注解：
 
 ```ts
 let num: number;
@@ -48,7 +48,7 @@ bool = 'false'; // Error
 TypeScript 为数组提供了专用的类型语法，因此你可以很轻易的注解数组。它使用后缀 `[]`， 接着你可以根据需要补充任何有效的类型注解（如：`:boolean[]`）。它能让你安全的使用任何有关数组的操作，而且它也能防止一些类似于赋值错误类型给成员的行为。如下所示：
 
 ```ts
-const boolArray: boolean[];
+let boolArray: boolean[];
 
 boolArray = [true, false];
 console.log(boolArray[0]); // true
@@ -119,7 +119,7 @@ name = {
 };
 ```
 
-内联类型能为你快速的提供一个类型注解。它可以帮助你省去为类型起名的麻烦（你可能会使用一个很糟糕的名称）。然而，如果你发现需要多次使用相同的内联注解时，考虑把它重构为一个接口（或者是 `type alias`，它会在接下来的部分提到）是一个不错的注意。
+内联类型能为你快速的提供一个类型注解。它可以帮助你省去为类型起名的麻烦（你可能会使用一个很糟糕的名称）。然而，如果你发现需要多次使用相同的内联注解时，考虑把它重构为一个接口（或者是 `type alias`，它会在接下来的部分提到）是一个不错的主意。
 
 ## 特殊类型
 
@@ -149,7 +149,9 @@ num = power;
 在类型系统中，JavaScript 中的 null 和 undefined 字面量和其他被标注了 `any` 类型的变量一样，都能被赋值给任意类型的变量，如下例子所示：
 
 ```ts
-let num: numer;
+// strictNullChecks: false
+
+let num: number;
 let str: string;
 
 // 这些类型能被赋予
@@ -210,7 +212,7 @@ interface Array<T> {
 }
 ```
 
-这意味着，当你在数组上调用 `.reverse` 方法时，得会获得类型安全：
+这意味着，当你在数组上调用 `.reverse` 方法时，将会获得类型安全：
 
 ```ts
 let numArr = [1, 2];
@@ -320,4 +322,4 @@ type Callback = (data: string) => void;
 
 ## 最后
 
-现在你已经能够为你的大部分 JavaScript 代码添加类型注解，接着，让我们深入了解 TypeScript 的类型系统把。
+现在你已经能够为你的大部分 JavaScript 代码添加类型注解，接着，让我们深入了解 TypeScript 的类型系统吧。

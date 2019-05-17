@@ -2,7 +2,6 @@ module.exports = {
   base: '/typescript-book-chinese/',
   title: '深入理解 TypeScript',
   description: 'TypeScript Deep Dive 中文版',
-  ga: 'UA-106861408-1',
   head: [
     ['link', { rel: 'icon', href: `/logo.png` }],
     ['link', { rel: 'manifest', href: '/manifest.json' }],
@@ -11,6 +10,17 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
     ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
   ],
+  plugins: [
+    '@vuepress/pwa',
+    '@vuepress/back-to-top',
+    [
+      '@vuepress/google-analytics',
+      {
+        ga: 'UA-106861408-1' // UA-00000000-0
+      }
+    ]
+  ],
+  // theme: [],
   themeConfig: {
     repo: 'jkchao/typescript-book-chinese',
     docsDir: 'docs',
@@ -19,11 +29,15 @@ module.exports = {
     activeHeaderLinks: false,
     sidebarDepth: 3,
     lastUpdated: '上次更新',
-    algolia: {
-      apiKey: 'fd0efd57c48824ceb1bcfa9690dba5b0',
-      indexName: 'jkchao_typescript'
-    },
-    nav: [{ text: 'Blog', link: 'https://jkchao.cn' }],
+    // algolia: {
+    //   apiKey: 'fd0efd57c48824ceb1bcfa9690dba5b0',
+    //   indexName: 'jkchao_typescript'
+    // },
+    wxConfig: [{ title: '与我交流', src: '/typescript-book-chinese/contact.png' }],
+    nav: [
+      { text: '原书链接', link: 'https://basarat.gitbooks.io/typescript/content/docs/getting-started.html' },
+      { text: 'Blog', link: 'https://jkchao.cn' }
+    ],
     sidebar: [
       {
         title: '写在前面',
@@ -104,7 +118,8 @@ module.exports = {
           '/tips/buildToggles',
           '/tips/typesafeEventEmitter',
           '/tips/metadata',
-          '/tips/covarianceAndContravariance'
+          '/tips/covarianceAndContravariance',
+          '/tips/infer'
         ]
       },
       {
@@ -122,9 +137,23 @@ module.exports = {
         ]
       },
       {
-        title: 'TypeScript 更新',
+        title: 'TypeScript FAQs',
         collapsable: false,
-        children: []
+        children: [
+          './faqs/common-bug-not-bugs',
+          './faqs/common-feature-request',
+          './faqs/type-system-behavior',
+          './faqs/function',
+          './faqs/class',
+          './faqs/generics',
+          './faqs/modules',
+          './faqs/enums',
+          './faqs/type-guards',
+          './faqs/jsx-and-react',
+          './faqs/thing-that-dont-work',
+          './faqs/commandline-behavior',
+          './faqs/tsconfig-behavior'
+        ]
       }
     ]
   }
